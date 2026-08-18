@@ -101,6 +101,8 @@ void RPCMonitorDigi::bookSectorRingME(DQMStore::IBooker& ibooker,
           fmt::format("{}/{}/{}/Disk_{}/SummaryByRings/", subsystemFolder_, recHitType, regionName, region * disk));
 
       for (int ring = RPCMonitorDigi::numberOfInnerRings_; ring <= 3; ring++) {
+        if (ring == 1 && disk <= 2)
+          continue;
         //Occupancy
         const std::string meName1 = fmt::format("Occupancy_Disk_{}_Ring_{}_CH01-CH18", (region * disk), ring);
 
